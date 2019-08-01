@@ -1,0 +1,15 @@
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\bin\Debug\chocolatePrediction.exe.config
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\bin\Debug\chocolatePrediction.exe
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\bin\Debug\chocolatePrediction.pdb
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\bin\Debug\Newtonsoft.Json.dll
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\bin\Debug\System.Net.Http.Formatting.dll
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\bin\Debug\Newtonsoft.Json.xml
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\bin\Debug\System.Net.Http.Formatting.xml
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\obj\Debug\chocolatePrediction.csprojAssemblyReference.cache
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\obj\Debug\chocolatePrediction.Form1.resources
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\obj\Debug\chocolatePrediction.Properties.Resources.resources
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\obj\Debug\chocolatePrediction.csproj.GenerateResource.cache
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\obj\Debug\chocolatePrediction.csproj.CoreCompileInputs.cache
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\obj\Debug\chocolatePrediction.csproj.CopyComplete
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\obj\Debug\chocolatePrediction.exe
+D:\Fax\ruap\projektniZadatak\projectChocolatePrediction\New folder\chocolatePrediction\chocolatePrediction\chocolatePrediction\obj\Debug\chocolatePrediction.pdb
