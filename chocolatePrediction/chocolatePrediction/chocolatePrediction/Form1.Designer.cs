@@ -34,7 +34,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtCompany = new System.Windows.Forms.TextBox();
@@ -46,7 +45,6 @@
             this.txtBeanType = new System.Windows.Forms.TextBox();
             this.txtBroadBeanOrigin = new System.Windows.Forms.TextBox();
             this.btn_predict = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -102,15 +100,6 @@
             this.label6.Size = new System.Drawing.Size(95, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "Company Location";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(303, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Rating";
             // 
             // label8
             // 
@@ -196,19 +185,11 @@
             this.btn_predict.UseVisualStyleBackColor = true;
             this.btn_predict.Click += new System.EventHandler(this.btn_predict_Click);
             // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(347, 6);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 18;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 259);
-            this.Controls.Add(this.textBox9);
+            this.ClientSize = new System.Drawing.Size(315, 259);
             this.Controls.Add(this.btn_predict);
             this.Controls.Add(this.txtBroadBeanOrigin);
             this.Controls.Add(this.txtBeanType);
@@ -220,7 +201,6 @@
             this.Controls.Add(this.txtCompany);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -243,7 +223,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtCompany;
@@ -255,7 +234,6 @@
         private System.Windows.Forms.TextBox txtBeanType;
         private System.Windows.Forms.TextBox txtBroadBeanOrigin;
         private System.Windows.Forms.Button btn_predict;
-        private System.Windows.Forms.TextBox textBox9;
     }
 }
 

@@ -35,13 +35,7 @@ namespace chocolatePrediction
         private string companyLocation;
         private string beanType;
         private string broadBeanOrigin;
-        private string rating = "1";
-
-        public class StringTable
-        {
-            public string[] columnNames { get; set; }
-            public string[,] values { get; set; }
-        }
+        private string rating = "3.75";
 
         private async void btn_predict_Click(object sender, EventArgs e)
         {
@@ -61,15 +55,38 @@ namespace chocolatePrediction
             {
                 var scoreRequest = new
                 {
-
-                    Inputs = new Dictionary<string, StringTable>() {
+                    Inputs = new Dictionary<string, List<Dictionary<string, string>>>() {
                         {
                             "input1",
-                            new StringTable()
-                            {
-                                columnNames = new string[] { "Company", "Specific Bean Origin", "REF", "Review Date", "Cocoa Percent", "Company Location", "Rating", "Bean Type", "Broad Bean Origin" },
-                                values = new string[,] { { company, specificBeanOrigin, refVal, reviewDate, cocoaPercent, companyLocation, rating, beanType, broadBeanOrigin } }
-
+                            new List<Dictionary<string, string>>(){new Dictionary<string, string>(){
+                                            {
+                                                "Company", company.ToString()
+                                            },
+                                            {
+                                                "Specific Bean Origin", specificBeanOrigin.ToString()
+                                            },
+                                            {
+                                                "REF", refVal.ToString()
+                                            },
+                                            {
+                                                "Review Date", reviewDate.ToString()
+                                            },
+                                            {
+                                                "Cocoa Percent", cocoaPercent.ToString()
+                                            },
+                                            {
+                                                "Company Location", company.ToString()
+                                            },
+                                            {
+                                                "Rating", "1"
+                                            },
+                                            {
+                                                "Bean Type", beanType.ToString()
+                                            },
+                                            {
+                                                "Broad Bean Origin", broadBeanOrigin.ToString()
+                                            },
+                                }
                             }
                         },
                     },
@@ -82,23 +99,12 @@ namespace chocolatePrediction
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
                 client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/444fb7db90244e75a78e014b22cfd457/services/fdd47fb1f38f424d952e8943004b7edb/execute?api-version=2.0&format=swagger");
 
-                // WARNING: The 'await' statement below can result in a deadlock
-                // if you are calling this code from the UI thread of an ASP.Net application.
-                // One way to address this would be to call ConfigureAwait(false)
-                // so that the execution does not attempt to resume on the original context.
-                // For instance, replace code such as:
-                //      result = await DoSomeTask()
-                // with the following:
-                //      result = await DoSomeTask().ConfigureAwait(false)
-
                 HttpResponseMessage response = await client.PostAsJsonAsync("", scoreRequest);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    //hilfe
                     string result = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine("Result: {0}", result);
-                    MessageBox.Show(result, "Result", MessageBoxButtons.OK);
+                    getChocolateClass(result);
                 }
                 else
                 {
@@ -112,6 +118,53 @@ namespace chocolatePrediction
                     Console.WriteLine(responseContent);
                 }
             }
+        }
+
+        private void getChocolateClass(string result)
+        {
+            //parsanje responsa
+            string[] resultArray;
+            double[] classPercentage = new double[2];
+
+            resultArray = result.Split('\\');
+
+            //prvaKlasa
+            resultArray[2] = resultArray[2].Replace(":", "");
+            resultArray[2] = resultArray[2].Replace(",", "");
+            resultArray[2] = resultArray[2].Replace("Scored Probabilities for Class ", "");
+            resultArray[2] = resultArray[2].Replace("\"", "");
+
+            //drugaKlasa
+            resultArray[4] = resultArray[4].Replace(":", "");
+            resultArray[4] = resultArray[4].Replace(",", "");
+            resultArray[4] = resultArray[4].Replace("Scored Probabilities for Class ", "");
+            resultArray[4] = resultArray[4].Replace("\"", "");
+
+            //trecaKlasa
+            resultArray[6] = resultArray[6].Replace(":", "");
+            resultArray[6] = resultArray[6].Replace(",", "");
+            resultArray[6] = resultArray[6].Replace("Scored Labels", "");
+            resultArray[6] = resultArray[6].Replace("\"", "");
+            resultArray[6] = resultArray[6].Replace("]", "");
+            resultArray[6] = resultArray[6].Replace("}", "");
+
+            //classPercentage[0] = double.Parse(resultArray[2]);
+            //classPercentage[1] = double.Parse(resultArray[4]);
+            //classPercentage[2] = double.Parse(resultArray[6]);
+
+
+
+            if (resultArray[2] == "0.51*" || resultArray[2] == "0.61*" || resultArray[2] == "0.71*" || resultArray[2] == "0.81*" || resultArray[2] == "0.91*" || resultArray[2] == "1")
+                MessageBox.Show("It's excelet chocolate with percentage of " + resultArray[2], "Result", MessageBoxButtons.OK);
+            else if (resultArray[4] == "0.51*" || resultArray[4] == "0.61*" || resultArray[4] == "0.71*" || resultArray[4] == "0.81*" || resultArray[4] == "0.91*" || resultArray[4] == "1")
+                MessageBox.Show("It's good chocolate with percentage of " + resultArray[4], "Result", MessageBoxButtons.OK);
+            else if (resultArray[6] == "0.51*" || resultArray[6] == "0.61*" || resultArray[6] == "0.71*" || resultArray[6] == "0.81*" || resultArray[6] == "0.91*" || resultArray[6] == "1")
+                MessageBox.Show("It's bad chocolate with percentage of " + resultArray[6], "Result", MessageBoxButtons.OK);
+
+            //MessageBox.Show(classPercentage[0].ToString(), "Result A", MessageBoxButtons.OK);
+
+            //Console.WriteLine("Result: {0}", result);
+            //MessageBox.Show(result, "Result", MessageBoxButtons.OK);
         }
     }
 }
