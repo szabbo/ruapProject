@@ -11,6 +11,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace chocolatePrediction
 {
@@ -33,9 +34,9 @@ namespace chocolatePrediction
         private string reviewDate;
         private string cocoaPercent;
         private string companyLocation;
+        private string rating;
         private string beanType;
         private string broadBeanOrigin;
-        private string rating = "3.75";
 
         private async void btn_predict_Click(object sender, EventArgs e)
         {
@@ -46,6 +47,7 @@ namespace chocolatePrediction
             reviewDate = txtReviewDate.Text.ToString();
             cocoaPercent = txtCocoaPercent.Text.ToString();
             companyLocation = txtCompanyLocation.Text.ToString();
+            rating = txtRating.Text.ToString();
             beanType = txtBeanType.Text.ToString();
             broadBeanOrigin = txtBroadBeanOrigin.Text.ToString();
 
@@ -78,7 +80,7 @@ namespace chocolatePrediction
                                                 "Company Location", company.ToString()
                                             },
                                             {
-                                                "Rating", "1"
+                                                "Rating", rating.ToString()
                                             },
                                             {
                                                 "Bean Type", beanType.ToString()
@@ -108,14 +110,14 @@ namespace chocolatePrediction
                 }
                 else
                 {
-                    Console.WriteLine(string.Format("The request failed with status code: {0}", response.StatusCode));
+                    //Console.WriteLine(string.Format("The request failed with status code: {0}", response.StatusCode));
 
                     // Print the headers - they include the requert ID and the timestamp,
                     // which are useful for debugging the failure
-                    Console.WriteLine(response.Headers.ToString());
+                    //Console.WriteLine(response.Headers.ToString());
 
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine(responseContent);
+                    //string responseContent = await response.Content.ReadAsStringAsync();
+                    //Console.WriteLine(responseContent);
                 }
             }
         }
@@ -124,7 +126,7 @@ namespace chocolatePrediction
         {
             //parsanje responsa
             string[] resultArray;
-            double[] classPercentage = new double[2];
+            Decimal bad, good, excelent;
 
             resultArray = result.Split('\\');
 
@@ -148,23 +150,39 @@ namespace chocolatePrediction
             resultArray[6] = resultArray[6].Replace("]", "");
             resultArray[6] = resultArray[6].Replace("}", "");
 
-            //classPercentage[0] = double.Parse(resultArray[2]);
-            //classPercentage[1] = double.Parse(resultArray[4]);
-            //classPercentage[2] = double.Parse(resultArray[6]);
+            bad = Convert.ToDecimal(Double.Parse(resultArray[2], System.Globalization.NumberStyles.Float, CultureInfo.InvariantCulture));
+            good = Convert.ToDecimal(Double.Parse(resultArray[4], System.Globalization.NumberStyles.Float, CultureInfo.InvariantCulture));
+            excelent = Convert.ToDecimal(Double.Parse(resultArray[6], System.Globalization.NumberStyles.Float, CultureInfo.InvariantCulture));
 
-
-
-            if (resultArray[2] == "0.51*" || resultArray[2] == "0.61*" || resultArray[2] == "0.71*" || resultArray[2] == "0.81*" || resultArray[2] == "0.91*" || resultArray[2] == "1")
-                MessageBox.Show("It's excelet chocolate with percentage of " + resultArray[2], "Result", MessageBoxButtons.OK);
-            else if (resultArray[4] == "0.51*" || resultArray[4] == "0.61*" || resultArray[4] == "0.71*" || resultArray[4] == "0.81*" || resultArray[4] == "0.91*" || resultArray[4] == "1")
-                MessageBox.Show("It's good chocolate with percentage of " + resultArray[4], "Result", MessageBoxButtons.OK);
-            else if (resultArray[6] == "0.51*" || resultArray[6] == "0.61*" || resultArray[6] == "0.71*" || resultArray[6] == "0.81*" || resultArray[6] == "0.91*" || resultArray[6] == "1")
-                MessageBox.Show("It's bad chocolate with percentage of " + resultArray[6], "Result", MessageBoxButtons.OK);
-
-            //MessageBox.Show(classPercentage[0].ToString(), "Result A", MessageBoxButtons.OK);
-
-            //Console.WriteLine("Result: {0}", result);
             //MessageBox.Show(result, "Result", MessageBoxButtons.OK);
+
+            if (bad > good && bad > excelent)
+                MessageBox.Show("It's bad chocolate with percentage of " + resultArray[2], "Result", MessageBoxButtons.OK);
+            else if (good > bad && good > excelent)
+                MessageBox.Show("It's good chocolate with percentage of " + resultArray[2], "Result", MessageBoxButtons.OK);
+            else if (excelent > bad && excelent > good)
+                MessageBox.Show("It's excelet chocolate with percentage of " + resultArray[6], "Result", MessageBoxButtons.OK);
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBroadBeanOrigin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBeanType_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

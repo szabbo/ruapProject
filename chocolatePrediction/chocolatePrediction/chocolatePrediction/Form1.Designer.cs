@@ -43,8 +43,10 @@
             this.txtCocoaPercent = new System.Windows.Forms.TextBox();
             this.txtCompanyLocation = new System.Windows.Forms.TextBox();
             this.txtBeanType = new System.Windows.Forms.TextBox();
-            this.txtBroadBeanOrigin = new System.Windows.Forms.TextBox();
+            this.txtRating = new System.Windows.Forms.TextBox();
             this.btn_predict = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBroadBeanOrigin = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -104,20 +106,22 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 165);
+            this.label8.Location = new System.Drawing.Point(12, 188);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(59, 13);
             this.label8.TabIndex = 7;
             this.label8.Text = "Bean Type";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 191);
+            this.label9.Location = new System.Drawing.Point(12, 214);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 13);
             this.label9.TabIndex = 8;
             this.label9.Text = "Broad Bean Origin";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // txtCompany
             // 
@@ -163,21 +167,23 @@
             // 
             // txtBeanType
             // 
-            this.txtBeanType.Location = new System.Drawing.Point(197, 162);
+            this.txtBeanType.Location = new System.Drawing.Point(197, 185);
             this.txtBeanType.Name = "txtBeanType";
             this.txtBeanType.Size = new System.Drawing.Size(100, 20);
             this.txtBeanType.TabIndex = 15;
+            this.txtBeanType.TextChanged += new System.EventHandler(this.txtBeanType_TextChanged);
             // 
-            // txtBroadBeanOrigin
+            // txtRating
             // 
-            this.txtBroadBeanOrigin.Location = new System.Drawing.Point(197, 188);
-            this.txtBroadBeanOrigin.Name = "txtBroadBeanOrigin";
-            this.txtBroadBeanOrigin.Size = new System.Drawing.Size(100, 20);
-            this.txtBroadBeanOrigin.TabIndex = 16;
+            this.txtRating.Location = new System.Drawing.Point(197, 161);
+            this.txtRating.Name = "txtRating";
+            this.txtRating.Size = new System.Drawing.Size(100, 20);
+            this.txtRating.TabIndex = 16;
+            this.txtRating.TextChanged += new System.EventHandler(this.txtBroadBeanOrigin_TextChanged);
             // 
             // btn_predict
             // 
-            this.btn_predict.Location = new System.Drawing.Point(222, 224);
+            this.btn_predict.Location = new System.Drawing.Point(222, 237);
             this.btn_predict.Name = "btn_predict";
             this.btn_predict.Size = new System.Drawing.Size(75, 23);
             this.btn_predict.TabIndex = 17;
@@ -185,13 +191,31 @@
             this.btn_predict.UseVisualStyleBackColor = true;
             this.btn_predict.Click += new System.EventHandler(this.btn_predict_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 164);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Rating";
+            // 
+            // txtBroadBeanOrigin
+            // 
+            this.txtBroadBeanOrigin.Location = new System.Drawing.Point(197, 211);
+            this.txtBroadBeanOrigin.Name = "txtBroadBeanOrigin";
+            this.txtBroadBeanOrigin.Size = new System.Drawing.Size(100, 20);
+            this.txtBroadBeanOrigin.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 259);
-            this.Controls.Add(this.btn_predict);
+            this.ClientSize = new System.Drawing.Size(310, 266);
             this.Controls.Add(this.txtBroadBeanOrigin);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btn_predict);
+            this.Controls.Add(this.txtRating);
             this.Controls.Add(this.txtBeanType);
             this.Controls.Add(this.txtCompanyLocation);
             this.Controls.Add(this.txtCocoaPercent);
@@ -232,8 +256,10 @@
         private System.Windows.Forms.TextBox txtCocoaPercent;
         private System.Windows.Forms.TextBox txtCompanyLocation;
         private System.Windows.Forms.TextBox txtBeanType;
-        private System.Windows.Forms.TextBox txtBroadBeanOrigin;
+        private System.Windows.Forms.TextBox txtRating;
         private System.Windows.Forms.Button btn_predict;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtBroadBeanOrigin;
     }
 }
 
